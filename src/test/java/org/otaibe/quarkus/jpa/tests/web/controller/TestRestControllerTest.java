@@ -15,7 +15,7 @@ public class TestRestControllerTest {
           .when().get("/test")
           .then()
              .statusCode(200)
-             .body(is("hello"));
+             .body(is("Sofia"));
     }
 
 }
