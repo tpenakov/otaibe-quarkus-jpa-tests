@@ -16,14 +16,4 @@ import javax.persistence.Id;
 public class Location extends LocationBase {
     @Id
     private Long id;
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
 }
