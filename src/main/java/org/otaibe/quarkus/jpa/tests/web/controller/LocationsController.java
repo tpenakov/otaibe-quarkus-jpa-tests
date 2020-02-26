@@ -16,11 +16,19 @@ import java.util.List;
 @Slf4j
 public class LocationsController {
 
+    public static final String DESTINATIONS = "/destinations";
+    public static final String DESTINATIONS_START_WITH = "/destinations-start-with";
+
     LocationRepository locationService;
 
-    @RequestMapping(value = "/destinations", produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = DESTINATIONS, produces = MediaType.APPLICATION_JSON)
     public List<Location> findDestinationByName(@RequestParam @NotNull String q) {
         return getLocationService().findByNameContainingIgnoreCase(q);
+    }
+
+    @RequestMapping(value = DESTINATIONS_START_WITH, produces = MediaType.APPLICATION_JSON)
+    public List<Location> findDestinationByNameStartingWith(@RequestParam @NotNull String q) {
+        return getLocationService().findByNameStartingWithIgnoreCase(q);
     }
 
     public LocationRepository getLocationService() {

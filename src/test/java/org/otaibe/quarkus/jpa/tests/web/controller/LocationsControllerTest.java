@@ -13,7 +13,17 @@ public class LocationsControllerTest {
     public void testDestinationEndpoint() {
         given()
                 .queryParam("q", "Sof")
-                .when().get("/destinations")
+                .when().get(LocationsController.DESTINATIONS)
+                .then()
+                .statusCode(200)
+                .body(containsStringIgnoringCase("Sofia"));
+    }
+
+    @Test
+    public void testDestinationStartWithEndpoint() {
+        given()
+                .queryParam("q", "sof")
+                .when().get(LocationsController.DESTINATIONS_START_WITH)
                 .then()
                 .statusCode(200)
                 .body(containsStringIgnoringCase("Sofia"));
